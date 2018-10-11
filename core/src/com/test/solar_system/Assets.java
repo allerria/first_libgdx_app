@@ -1,17 +1,14 @@
 package com.test.solar_system;
 
 import com.badlogic.gdx.graphics.Texture;
-import com.badlogic.gdx.graphics.g2d.TextureRegion;
 
 public class Assets {
     public static Texture background;
-
     public static Texture sun;
-
     public static Texture planet1;
-
     public static Texture planet2;
-    public static Texture planet2Satellite;
+    public static Texture planet1Satellite;
+    public static Texture button;
 
     public static Texture loadTexture(String file) {
         return new Texture(file);
@@ -22,7 +19,8 @@ public class Assets {
         sun = loadTexture("sun.png");
         planet1 = loadTexture("planet1.png");
         planet2 = loadTexture("planet2.png");
-        planet2Satellite = loadTexture("planet2_satellite.png");
+        planet1Satellite = loadTexture("planet1_satellite.png");
+        button = loadTexture("button.png");
     }
 
     public static void dispose() {
@@ -30,7 +28,8 @@ public class Assets {
         sun.dispose();
         planet1.dispose();
         planet2.dispose();
-        planet2Satellite.dispose();
+        planet1Satellite.dispose();
+        button.dispose();
     }
 
 }
