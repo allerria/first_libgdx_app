@@ -43,21 +43,7 @@ public class GameScreen extends ScreenAdapter {
         planet1Satellite = new Satellite(Assets.planet1Satellite, PLANET_1_SATELLITE_RADIUS,
                 planet1, PLANET1_SATELLITE_FROM_PLANET1_DISTANCE, PLANET1_SATELLITE_SPEED);
         buttonRect = new Rectangle(BUTTON_MARGIN, BUTTON_MARGIN, BUTTON_SIZE, BUTTON_SIZE);
-        Gdx.input.setInputProcessor(new InputAdapter() {
-
-            @Override
-            public boolean touchDown(int screenX, int screenY, int pointer, int button) {
-
-                screenY = Gdx.graphics.getHeight() - screenY; //strange stuff
-                //i don't know why but screenX is inverted from top to bottom, but batcher bottom to top
-                System.out.println(String.valueOf(screenX) + " " + String.valueOf(screenY));
-                if (buttonRect.contains(screenX, screenY)) {
-                    GameScreen.IS_GAME_RUN = !GameScreen.IS_GAME_RUN;
-                }
-                return true;
-            }
-
-        });
+        initButtonTouchDownListener();
     }
 
     private void update(Float delta) {
@@ -91,5 +77,23 @@ public class GameScreen extends ScreenAdapter {
     private void drawUI() {
         game.batch.draw(Assets.background, 0, 0, Gdx.graphics.getWidth(), Gdx.graphics.getHeight());
         game.batch.draw(Assets.button, BUTTON_MARGIN, BUTTON_MARGIN, BUTTON_SIZE, BUTTON_SIZE);
+    }
+
+    private void initButtonTouchDownListener() {
+        Gdx.input.setInputProcessor(new InputAdapter() {
+
+            @Override
+            public boolean touchDown(int screenX, int screenY, int pointer, int button) {
+
+                screenY = Gdx.graphics.getHeight() - screenY; //strange stuff
+                //i don't know why but screenX is inverted from top to bottom, but batcher bottom to top
+                System.out.println(String.valueOf(screenX) + " " + String.valueOf(screenY));
+                if (buttonRect.contains(screenX, screenY)) {
+                    GameScreen.IS_GAME_RUN = !GameScreen.IS_GAME_RUN;
+                }
+                return true;
+            }
+
+        });
     }
 }

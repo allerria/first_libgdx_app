@@ -1,7 +1,6 @@
 package com.test.solar_system;
 
 import com.badlogic.gdx.graphics.Texture;
-import com.badlogic.gdx.math.Vector2;
 
 public class Planet extends Body {
 
